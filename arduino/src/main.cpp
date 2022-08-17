@@ -18,7 +18,7 @@ void cmd_unrecognized(SerialCommands* sender, const char* cmd)
  * Second parameter: Y position
  * Third parameter: text to display
  * 
- * E.g. lcd_write//0//1//second line text
+ * E.g. cmd:lcd:write//0//1//second line text
  */
 void cmd_lcd_write(SerialCommands* sender)
 {
@@ -45,17 +45,17 @@ void cmd_lcd_write(SerialCommands* sender)
   lcd.setCursor(x_pos, y_pos);
   lcd.print(text);
 
-  sender->GetSerial()->println("INFO: Command [lcd_write] successfully executed with parameters [x_pos=" + String(x_pos_str) + "], [y_pos=" + String(y_pos_str) + "], [text=" + String(text) + "]");
+  sender->GetSerial()->println("INFO: Command [cmd:lcd:write] successfully executed with parameters [x_pos=" + String(x_pos_str) + "], [y_pos=" + String(y_pos_str) + "], [text=" + String(text) + "]");
 }
 
 void cmd_lcd_clear(SerialCommands* sender)
 {
   lcd.clear();
-  sender->GetSerial()->println("INFO: Command [lcd_clear] successfully executed");
+  sender->GetSerial()->println("INFO: Command [cmd:lcd:clear] successfully executed");
 }
 
-SerialCommand cmd_lcd_write_("lcd_write", cmd_lcd_write);
-SerialCommand cmd_lcd_clear_("lcd_clear", cmd_lcd_clear);
+SerialCommand cmd_lcd_write_("cmd:lcd:write", cmd_lcd_write);
+SerialCommand cmd_lcd_clear_("cmd:lcd:clear", cmd_lcd_clear);
 
 void setup()
 {
