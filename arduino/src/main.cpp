@@ -10,7 +10,7 @@ LiquidCrystal_I2C lcd(0x3F, 16, 2);
 
 void cmd_unrecognized(SerialCommands* sender, const char* cmd)
 {
-  sender->GetSerial()->print("ERROR: Unrecognized command [" + String(cmd) + "]");
+  sender->GetSerial()->println("ERROR: Unrecognized command [" + String(cmd) + "]");
 }
 
 /**
