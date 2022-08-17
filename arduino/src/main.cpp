@@ -3,7 +3,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <SerialCommands.h>
 
-char serial_command_buffer_[32];
+char serial_command_buffer_[64];
 
 SerialCommands serial_commands_(&Serial, serial_command_buffer_, sizeof(serial_command_buffer_), "\n", "//");
 LiquidCrystal_I2C lcd(0x3F, 16, 2);
