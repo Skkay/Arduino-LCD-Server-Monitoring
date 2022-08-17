@@ -62,9 +62,16 @@ void cmd_lcd_backlight(SerialCommands* sender)
     sender->GetSerial()->println("INFO: Command [cmd:lcd:backlight] successfully executed");
 }
 
+void cmd_lcd_noBacklight(SerialCommands* sender)
+{
+    lcd.noBacklight();
+    sender->GetSerial()->println("INFO: Command [cmd:lcd:nobacklight] successfully executed");
+}
+
 SerialCommand cmd_lcd_write_("cmd:lcd:write", cmd_lcd_write);
 SerialCommand cmd_lcd_clear_("cmd:lcd:clear", cmd_lcd_clear);
 SerialCommand cmd_lcd_backlight_("cmd:lcd:backlight", cmd_lcd_backlight);
+SerialCommand cmd_lcd_noBacklight_("cmd:lcd:nobacklight", cmd_lcd_noBacklight);
 
 void setup()
 {
@@ -79,6 +86,7 @@ void setup()
     serial_commands_.AddCommand(&cmd_lcd_write_);
     serial_commands_.AddCommand(&cmd_lcd_clear_);
     serial_commands_.AddCommand(&cmd_lcd_backlight_);
+    serial_commands_.AddCommand(&cmd_lcd_noBacklight_);
 
     Serial.println("Initialization done!");
 }
